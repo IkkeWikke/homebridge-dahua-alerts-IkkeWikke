@@ -6,8 +6,8 @@ import crypto from 'crypto'
 import { Readable } from 'stream'
 
 class DahuaEvents {
-    //cgi-bin/eventManager.cgi?action=attach&codes=[AlarmLocal,VideoMotion,VideoLoss,VideoBlind] -- but we only care about VideoMotion
-    private EVENTS_URI:             string = '/cgi-bin/eventManager.cgi?action=attach&codes=[VideoMotion]'
+    //cgi-bin/eventManager.cgi?action=attach&codes=[AlarmLocal,CrossRegionDetection,VideoLoss,VideoBlind] -- but we only care about CrossRegionDetection
+    private EVENTS_URI:             string = '/cgi-bin/eventManager.cgi?action=attach&codes=[CrossRegionDetection]'
     private HEADERS:                any = {'Accept':'multipart/x-mixed-replace'}
     
     private RECONNECT_INTERNAL_MS:  number = 10000
@@ -172,7 +172,7 @@ class DahuaEvents {
             myboundary
             Content-Type: text/plain
             Content-Length:36
-            Code=VideoMotion;action=Stop;index=0
+            Code=CrossRegionDetection;action=Stop;index=0
 
             ---or---
 
@@ -182,7 +182,7 @@ class DahuaEvents {
 
             Content-Length:77
 
-            Code=VideoMotion;action=Stop;index=5;data={
+            Code=CrossRegionDetection;action=Stop;index=5;data={
             "SmartMotionEnable" : false
             }
          */
